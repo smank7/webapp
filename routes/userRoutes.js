@@ -10,3 +10,4 @@ router.put('/self', userController.updateUserInfo);
 router.get('/verify', userController.verifyUser);
 
 module.exports = router;
+
