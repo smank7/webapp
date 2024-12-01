@@ -1,23 +1,39 @@
-# webapp
+### Cloud-Native Node.js API on Google Cloud Platform using IaC
 
-In this assignment we are creating a backend application which performs CRUD operations of a user using the help of different api's.
+This project focuses on a user management system with a robust backend to efficiently create, update, and delete user accounts while ensuring scalability through cloud technology. The system supports CRUD operations, making it dynamic and user-friendly. By integrating with GCP, it offers secure account verification along with automated email notifications to update users on their account status.
 
-The folder structure is as follows: The main script where the server is starting is in index.js. The routes of the api's are in routes folder The database schema is present in models/userModel. The api logic is present in controllers/user.js The db details are present in db.js and .env file contains the environment details. Tests are written in tests/test.js
+### About this Repository
 
-The controller contains 3 main methods: createUser which is a POST method and takes in firstname, lastname, username and password. getUser which is a GET method and takes userid as a parameter and fetches the data of the user editUser which is a PUT method and also takes the userid parameter to update the data.
+This repository contains the code for developing a cloud-native web application. It explains how to create a machine image, configure the Google Cloud Ops Agent, and set up the web application to launch automatically using Systemd on a VM instance. Additionally, it covers implementing GitHub Actions workflows for integration testing and CI/CD processes in a production environment.
 
-the GET and PUT method are authenticated that means they require authentication to work.
+### Tech Stack
 
-In this assignment we are using sequelize orm instead of using queries to create tables, insert data and fetch values.
+| **Category**               | **Technology/Tool**                                      |
+|----------------------------|---------------------------------------------------------|
+| **Programming Language**   | JavaScript (Node.js)                                    |
+| **Database**               | MySQL                                                  |
+| **Cloud Services**         | GCP (Compute Engine, SQL, VPC Network, IAM & Admin, Network Services, Cloud Functions, Cloud Storage) |
+| **Infrastructure as Code** | Terraform                                              |
+| **Image Creation**         | Packer (Custom Machine Images)                         |
+| **Version Control**        | Git                                                    |
+| **CI/CD**                  | GitHub Actions                                         |
+| **Other Tools**            | Mailgun                                                |
 
-We test the api's using Postman.
+### Setting Up Applications, Infrastructure as Code, and Serverless Repositories
 
-we have also created a .github/workflows folder/file which contains the yml file. The yml file contains the workflow structure which allows github to know whenever we push the code to our branch.
+1. **Clone the repositories:**
+   - Clone the **webapp repository** (set up as per its documentation).
+   - Clone the **tf-gcp-infra repository** and follow the instructions in `terraform.md`.
+   - Clone the **serverless repository** and follow the guidance in `serverless.md`.
 
-Whenever a pull request us created from our feature branch in our fork to the main branch in our org, workflow is triggered and checks if all the test cases are passing.
+2. **How these repositories work together:**
+   - Clone all three repositories and ensure that Terraform prerequisites are installed locally.
+   - Set up everything according to `terraform.md`.
+   - Prepare your system with:
+     - Terraform
+     - Google Cloud CLI
+   - Navigate to the `tf-gcp-infra` repository folder, copy the zip file from the `serverless repository`, and rename it to `function-source.zip`.
+   - Run the `terraform apply` command from the folder containing the Terraform code to set up your infrastructure.
 
-Only if all test cases are passing, then we should be able to merge our changes.
-
-Assignment 3
-Test 1 - Create an account, and using the GET call, validate account exists.
-Test 2 - Update the account and using the GET call, validate the account was updated.
+3. **Deployment Workflow:**
+   - Once the infrastructure is set up, pushing changes to the **webapp repository** and merging a pull request will trigger a GitHub Actions workflow. This will automatically build a new machine image for you.
