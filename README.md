@@ -37,3 +37,8 @@ This repository contains the code for developing a cloud-native web application.
 
 3. **Deployment Workflow:**
    - Once the infrastructure is set up, pushing changes to the **webapp repository** and merging a pull request will trigger a GitHub Actions workflow. This will automatically build a new machine image for you.
+
+
+
+**Serverless Repo:** https://github.com/smank7/serverless
+**Terraform repo:** https://github.com/smank7/Terraform-Infra
